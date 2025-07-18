@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(223, 180, 240);
+    background-image: url(https://s3.us-west-1.wasabisys.com/ft-backgrounds/-mreflowMatt_Wolfe_a_colorful_digital_background_477e314c-c8c2-4491-88d5-1194cd417006.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    text-transform: capitalize;
+
+}
+
+#container {
+    height: 500px;
+    width: 800px;
+    border: 1px solid black;
+    margin-left: 600px;
+    margin-top: 150px;
+    background: linear-gradient(to right, red, yellow, blue);
+
+
+}
+
+a {
+    height: 80px;
+    width: 150px;
+    display: inline-flex;
+    margin-top: 210px;
+    margin-left: 100px;
+    text-transform: capitalize;
+    color: black;
+}
+
+#santosh {
+    height: 600px;
+    width: 800px;
+    border: 1px solid black;
+    margin-left: 600px;
+    margin-top: 150px;
+    background: linear-gradient(to right, red, yellow, blue);
+
+
+
+}
+
+p {
+    text-align: center;
+    text-transform: capitalize;
+    color: black;
+
+}
+
+h2 {
+    text-align: center;
+}
+
+img {
+    height: 300px;
+    width: 290px;
+    margin-left: 65px;
+    margin-top: 100px;
+
+}

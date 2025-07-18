@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Hello, World!</title>
+  </head>
+  <body>
+      <h1>Movie login page and insert data</h1>
+        <table border="1px">
+          <tr>
+          <th>movie name</th>
+          <th>movie reviews</th>
+          <th>movie rel_date</th>
+        </tr>
+
+      {%for movie in movie_list%}
+        <tr>
+          <td>{{movie.name}}</td>
+          <td>{{movie.reviews}}</td>
+          <td>{{movie.rel_date}}</td>
+        </tr>
+        {%endfor%}
+      </table>
+
+
+  </body>
+</html>
