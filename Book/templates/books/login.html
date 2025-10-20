@@ -1,0 +1,22 @@
+{% extends "books/base.html" %} {% load static %} {% block content %}
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="min-height: 80vh"
+>
+  <div class="card shadow-lg p-4" style="width: 400px">
+    <h3 class="text-center text-primary mb-4">🔐 Login to My Bookstore</h3>
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <div class="d-grid mt-3">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      <div class="text-center mt-3">
+        <p>
+          Don’t have an account?
+          <a href="{% url 'accounts:signup' %}">Sign up</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

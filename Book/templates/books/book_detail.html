@@ -1,0 +1,28 @@
+{% extends "books/base.html" %} {% load static %} {% block content %}
+
+<div class="book-detail">
+  {% if book.cover_image %}
+  <img class="cover" src="{{ book.cover_image.url }}" alt="{{ book.title }}" />
+  {% else %}
+  <img
+    class="cover"
+    src="{% static 'images/book.jpeg' %}"
+    alt="Default Image"
+  />
+  {% endif %}
+
+  <div class="meta">
+    <h2>{{ book.title }}</h2>
+    <p class="author">{{ book.author }}</p>
+    <p class="price">₹{{ book.price }}</p>
+    <p>{{ book.description }}</p>
+    <form method="post" action="{% url 'cart:add_to_cart' book.slug %}">
+      {% csrf_token %}
+      <label>
+        Qty <input type="number" name="quantity" value="1" min="1" />
+      </label>
+      <button type="submit">Add to cart</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

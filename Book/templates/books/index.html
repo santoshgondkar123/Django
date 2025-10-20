@@ -1,0 +1,44 @@
+{% extends "books/base.html" %} {% load static %} {% block content %}
+
+<h2>All Books</h2>
+<div class="grid">
+  {% for book in books %}
+  <article class="book-card">
+    <a href="{{ book.get_absolute_url }}">
+      <div class="thumb">
+        {% if book.cover_image %}
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" />
+        {% else %}
+        <img src="{% static 'img/default-book.png' %}" alt="{{ book.title }}" />
+        {% endif %}
+      </div>
+      <h3>{{ book.title }}</h3>
+    </a>
+    <p class="author">{{ book.author }}</p>
+    <p class="price">₹{{ book.price }}</p>
+    <form method="post" action="{% url 'cart:add_to_cart' book.slug %}">
+      {% csrf_token %}
+      <input
+        type="number"
+        name="quantity"
+        value="1"
+        min="1"
+        style="width: 60px"
+      />
+      <button type="submit">Add to cart</button>
+    </form>
+  </article>
+  {% empty %}
+  <p>No books found.</p>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if books.has_previous %}
+  <a href="?page={{ books.previous_page_number }}">Previous</a>
+  {% endif %} Page {{ books.number }} of {{ books.paginator.num_pages }} {% if
+  {% comment %} books.has_next %}
+  <a href="?page={{ books.next_page_number }}">Next</a> {% endcomment %} {%
+  endif %}
+</div>
+{% endblock %}

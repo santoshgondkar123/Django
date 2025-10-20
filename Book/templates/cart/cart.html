@@ -1,0 +1,34 @@
+{% extends "books/base.html" %} {% block content %}
+<h2>Your Cart</h2>
+{% if items %}
+<table class="cart-table">
+  <tr>
+    <th>Book</th>
+    <th>Qty</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  {% for it in items %}
+  <tr>
+    <td>{{ it.book.title }}</td>
+    <td>{{ it.quantity }}</td>
+    <td>₹{{ it.total_price }}</td>
+    <td>
+      <a href="{% url 'cart:remove' it.id %}">Remove</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<p class="cart-total">Total: ₹{{ total }}</p>
+<form method="post" action="#">
+  {% csrf_token %}
+  <button
+    type="button"
+    onclick="alert('Checkout demo — implement payment / order saving')"
+  >
+    Checkout
+  </button>
+</form>
+{% else %}
+<p>Your cart is empty. <a href="{% url 'books:index' %}">Shop now</a></p>
+{% endif %} {% endblock %}
